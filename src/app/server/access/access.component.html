@@ -1,0 +1,106 @@
+<div
+  style="
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 140px;
+    justify-content: flex-start;
+  "
+>
+  <div
+    class="bar"
+    style="
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 80px;
+    "
+  >
+    <input
+      type="text"
+      placeholder="🔍  Find any user by ID"
+      style="
+        font-size: 16px;
+        width: 800px;
+        font-weight: 500;
+        height: 64px;
+
+        background: rgb(244, 244, 245);
+        border: 1px solid transparent;
+        border-radius: 3px;
+        padding-left: 10px;
+        box-shadow: rgba(15, 15, 15, 0.1) 0 1px 2px;
+      "
+      #txt
+      (keyup)="onChange(txt.value)"
+    />
+  </div>
+  <table style="width: 1440px; border: 0; margin: 20px">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Avatar</th>
+        <th>Name</th>
+        <th>Comment</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tr *ngFor="let d of data">
+      <td>
+        <b>{{ d.id }}</b>
+      </td>
+
+      <td>
+        <img
+          src="https://avatars.dicebear.com/api/human/{{ d.name }}.svg"
+          style="width: 60px; height: 60px"
+        />
+      </td>
+      <td>
+        <p style="color: rgb(46, 46, 46); font-family:Verdana, Geneva, Tahoma, sans-serif;">
+          {{ d.name }}
+        </p>
+      </td>
+      <td>
+        <p
+          class="status status-paid"
+          style="text-align: left; font-size: 14px; font-weight: 500"
+        >
+          {{ d.body }}
+        </p>
+      </td>
+      <td>
+        <p class="status status-pending">{{ d.email }}</p>
+      </td>
+      <td>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+          "
+        >
+          <input
+            id="d.id"
+            type="button"
+            value="✏️"
+            (click)="getData()"
+            style="font-size: 1.4rem; margin: 8px"
+          />
+          <input
+            type="button"
+            value="🗑"
+            (click)="remove(d.id)"
+            style="font-size: 1.4rem"
+          />
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
